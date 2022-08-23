@@ -1,18 +1,19 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Routes } from "react-router-dom";
-import { useState } from "react";
 import NavBar from "./components/NavBar";
 import Articles from "./components/Articles";
+import Article from "./components/Article";
 
 function App() {
-  const [topic, setTopic] = useState("");
   return (
     <>
-      <NavBar setTopic={setTopic} />
+      <NavBar />
+
       <div className="App">
         <Routes>
-          <Route path="/articles/:topic" element={<Articles topic={topic} />} />
+          <Route path="/articles/:topic" element={<Articles />} />
+          <Route path="article/:article_id" element={<Article />} />
         </Routes>
       </div>
     </>
