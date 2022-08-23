@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { fetchArticles } from "../api.js";
 
-export default function Articles({ topic, setArticle_id }) {
+export default function Articles({ setArticle_id }) {
   const [isLoading, setIsLoading] = useState(true);
   const [articles, setArticles] = useState();
+  let { topic } = useParams();
 
   useEffect(() => {
     setIsLoading(true);
     fetchArticles().then(({ articles }) => {
-      if (topic) {
+      if (topic !== "home") {
         const filteredArticles = articles.filter(
           (article) => article.topic === topic
         );

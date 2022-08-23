@@ -1,9 +1,11 @@
 import { fetchArticle } from "../api.js";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-export default function Article({ article_id }) {
+export default function Article() {
   const [article, setArticle] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  let { article_id } = useParams();
 
   useEffect(() => {
     setIsLoading(true);
@@ -16,7 +18,6 @@ export default function Article({ article_id }) {
   if (isLoading) {
     return <p>Loading...</p>;
   }
-  console.log(article);
 
   return (
     <>
