@@ -4,7 +4,21 @@
   grid-template-columns: auto;
 }
 
+.article-header {
+  background-color: #2b6777;
+}
+
 @media only screen and (min-width: 600px) {
+  .article-page {
+    text-align: center;
+    display: grid;
+    grid-template-columns: auto;
+  }
+
+  .article-header {
+    background-color: #2b6777;
+  }
+
   .App {
     text-align: center;
     display: grid;
@@ -13,5 +27,6 @@
 }
 
 .article {
-  border: solid 2px green;
+  border: solid 2px rgb(0, 0, 0);
+  display: block;
 }
