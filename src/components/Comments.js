@@ -16,7 +16,7 @@ export default function Comments() {
   useEffect(() => {
     setIsLoading(true);
     fetchComments(article_id).then(({ comments }) => {
-      setComments(comments);
+      setComments(comments.reverse());
       setIsLoading(false);
     });
   }, [article_id]);
@@ -29,10 +29,10 @@ export default function Comments() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(newComment);
+
     postComment(article_id, newComment).then(() => {
       fetchComments(article_id).then(({ comments }) => {
-        setComments(comments);
+        setComments(comments.reverse());
       });
     });
   };
