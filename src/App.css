@@ -8,11 +8,29 @@
   background-color: #2b6777;
 }
 
+.article {
+  border: solid 2px rgb(0, 0, 0);
+  display: block;
+}
+
+.singleComment {
+  display: grid;
+  border: red 2px solid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+}
+
+.commentBody {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
 @media only screen and (min-width: 600px) {
   .article-page {
     text-align: center;
     display: grid;
-    grid-template-columns: auto;
+    grid-column-start: 1;
+    grid-column-end: 3;
   }
 
   .article-header {
@@ -24,9 +42,12 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
-}
 
-.article {
-  border: solid 2px rgb(0, 0, 0);
-  display: block;
+  .CommentContainer {
+    background-color: #f1f1f1;
+    height: 100vh;
+    overflow: auto;
+    margin-left: 20px;
+    text-align: justify;
+  }
 }

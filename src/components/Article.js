@@ -1,6 +1,7 @@
 import { fetchArticle, changeVotes } from "../api.js";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Comments from "./Comments.js";
 
 export default function Article() {
   const [article, setArticle] = useState();
@@ -64,6 +65,9 @@ export default function Article() {
         <div className="article-body">
           <p>{article.body}</p>
         </div>
+      </div>
+      <div className="CommentContainer">
+        <Comments />
       </div>
     </>
   );
