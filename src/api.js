@@ -26,3 +26,11 @@ export const changeVotes = (article_id, voteChange) => {
       return res.data;
     });
 };
+
+export const fetchComments = (article_id) => {
+  return axios
+    .get(`https://nc-news-bb.herokuapp.com/api/articles/${article_id}/comments`)
+    .then((res) => {
+      return res.data;
+    });
+};
