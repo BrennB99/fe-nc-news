@@ -34,3 +34,10 @@ export const fetchComments = (article_id) => {
       return res.data;
     });
 };
+
+export const postComment = (article_id, comment) => {
+  return axios.post(
+    `https://nc-news-bb.herokuapp.com/api/articles/${article_id}/comments`,
+    comment
+  );
+};
