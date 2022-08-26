@@ -1,8 +1,9 @@
 const axios = require("axios");
 
-export const fetchArticles = () => {
+export const fetchArticles = (filter) => {
+  console.log(filter, "api");
   return axios
-    .get("https://nc-news-bb.herokuapp.com/api/articles")
+    .get(`https://nc-news-bb.herokuapp.com/api/articles?${filter}`)
     .then((res) => {
       return res.data;
     });
