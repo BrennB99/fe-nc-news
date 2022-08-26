@@ -85,6 +85,7 @@ export default function Articles({ setArticle_id }) {
               <p>Topic: {article.topic}</p>
               <p>Author: {article.author}</p>
               <p>Created at: {article.created_at}</p>
+              <p>Votes: {article.votes}</p>
             </div>
           </Link>
         );
