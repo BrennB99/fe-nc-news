@@ -4,12 +4,29 @@ import { fetchArticles } from "../api.js";
 
 export default function Articles({ setArticle_id }) {
   const [isLoading, setIsLoading] = useState(true);
-  const [articles, setArticles] = useState();
+  const [articles, setArticles] = useState("");
+  const [query, setQuery] = useState("sort_by=created_at");
+  const [order, setOrder] = useState("order=DESC");
+  const [filter, setFilter] = useState("sort_by=created_at&order=DESC");
   let { topic } = useParams();
+
+  const handleSortBy = (event) => {
+    setQuery(`sort_by=${event.target.value}`);
+  };
+
+  const handleOrder = (event) => {
+    setOrder(`order=${event.target.value}`);
+  };
+
+  const handleSubmit = (event, query, order) => {
+    event.preventDefault();
+    const filterParams = query + "&" + order;
+    setFilter(filterParams);
+  };
 
   useEffect(() => {
     setIsLoading(true);
-    fetchArticles().then(({ articles }) => {
+    fetchArticles(filter).then(({ articles }) => {
       if (topic !== "home") {
         const filteredArticles = articles.filter(
           (article) => article.topic === topic
@@ -20,25 +37,59 @@ export default function Articles({ setArticle_id }) {
       }
       setIsLoading(false);
     });
-  }, [topic]);
+  }, [topic, filter]);
 
   if (isLoading) {
     return <p>Loading...</p>;
   }
 
-  return articles.map((article) => {
-    return (
-      <Link
-        to={`/article/${article.article_id}`}
-        onClick={() => setArticle_id(article.article_id)}
+  return (
+    <>
+      <form
+        onSubmit={(event) => {
+          handleSubmit(event, query, order);
+        }}
       >
-        <div key={article.article_id} className="article">
-          <h5>{article.title}</h5>
-          <p>Topic: {article.topic}</p>
-          <p>Author: {article.author}</p>
-          <p>Created at: {article.created_at}</p>
-        </div>
-      </Link>
-    );
-  });
+        <label>
+          Sort By:
+          <select
+            onChange={(event) => {
+              handleSortBy(event);
+            }}
+          >
+            <option value={"created_at"}>Date</option>
+            <option value={"title"}>Title</option>
+            <option value={"votes"}>Votes</option>
+            <option value={"author"}>Author</option>
+          </select>
+          <select
+            onChange={(event) => {
+              handleOrder(event);
+            }}
+          >
+            <option value={"DESC"}>Descending</option>
+            <option value={"ASC"}>Ascending</option>
+          </select>
+        </label>
+        <input type="submit" value="Filter!" />
+      </form>
+
+      {articles.map((article) => {
+        return (
+          <Link
+            to={`/article/${article.article_id}`}
+            onClick={() => setArticle_id(article.article_id)}
+          >
+            <div key={article.article_id} className="article">
+              <h5>{article.title}</h5>
+              <p>Topic: {article.topic}</p>
+              <p>Author: {article.author}</p>
+              <p>Created at: {article.created_at}</p>
+              <p>Votes: {article.votes}</p>
+            </div>
+          </Link>
+        );
+      })}
+    </>
+  );
 }
