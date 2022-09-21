@@ -16,8 +16,9 @@ function App() {
 
         <div className="App">
           <Routes>
+            <Route path="/" element={<Articles />} />
             <Route path="/articles/:topic" element={<Articles />} />
-            <Route path="article/:article_id" element={<Article />} />
+            <Route path="/article/:article_id" element={<Article />} />
           </Routes>
         </div>
       </UserContext.Provider>

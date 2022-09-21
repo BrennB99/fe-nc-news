@@ -1,7 +1,6 @@
 const axios = require("axios");
 
 export const fetchArticles = (filter) => {
-  console.log(filter, "api");
   return axios
     .get(`https://nc-news-bb.herokuapp.com/api/articles?${filter}`)
     .then((res) => {
@@ -40,5 +39,11 @@ export const postComment = (article_id, comment) => {
   return axios.post(
     `https://nc-news-bb.herokuapp.com/api/articles/${article_id}/comments`,
     comment
+  );
+};
+
+export const deleteComment = (comment_id) => {
+  return axios.delete(
+    `https://nc-news-bb.herokuapp.com/api/comments/${comment_id}`
   );
 };
