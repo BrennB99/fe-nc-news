@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { fetchComments, postComment } from "../api";
+import { fetchComments, postComment, deleteComment } from "../api";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../contexts/User";
 
@@ -37,6 +37,14 @@ export default function Comments() {
     });
   };
 
+  const removeComment = (comment_id) => {
+    deleteComment(comment_id).then(() => {
+      fetchComments(article_id).then(({ comments }) => {
+        setComments(comments.reverse());
+      });
+    });
+  };
+
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -49,6 +57,7 @@ export default function Comments() {
         onSubmit={(event) => {
           handleSubmit(event);
         }}
+        className="commentForm"
       >
         <label htmlFor="body">
           Share Your Thoughts:
@@ -65,13 +74,31 @@ export default function Comments() {
       </form>
 
       {comments.map((comment) => {
-        return (
-          <div className="singleComment">
-            <p className="commentBody">{comment.body}</p>
-            <p className="commentAuthor">By: {comment.author}</p>
-            <p className="commentVotes">votes: {comment.votes}</p>
-          </div>
-        );
+        if (comment.author === user) {
+          return (
+            <div className="singleComment">
+              <p className="commentBody">{comment.body}</p>
+              <p className="commentAuthor">By: {comment.author}</p>
+              <p className="commentVotes">votes: {comment.votes}</p>
+
+              <button
+                onClick={() => {
+                  removeComment(comment.comment_id);
+                }}
+              >
+                Delete!
+              </button>
+            </div>
+          );
+        } else {
+          return (
+            <div className="singleComment">
+              <p className="commentBody">{comment.body}</p>
+              <p className="commentAuthor">By: {comment.author}</p>
+              <p className="commentVotes">votes: {comment.votes}</p>
+            </div>
+          );
+        }
       })}
     </>
   );

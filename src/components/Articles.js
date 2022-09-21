@@ -27,7 +27,7 @@ export default function Articles({ setArticle_id }) {
   useEffect(() => {
     setIsLoading(true);
     fetchArticles(filter).then(({ articles }) => {
-      if (topic !== "home") {
+      if (topic !== "home" && topic !== undefined) {
         const filteredArticles = articles.filter(
           (article) => article.topic === topic
         );
@@ -49,6 +49,7 @@ export default function Articles({ setArticle_id }) {
         onSubmit={(event) => {
           handleSubmit(event, query, order);
         }}
+        className="parameters"
       >
         <label>
           Sort By:
@@ -84,7 +85,7 @@ export default function Articles({ setArticle_id }) {
               <h5>{article.title}</h5>
               <p>Topic: {article.topic}</p>
               <p>Author: {article.author}</p>
-              <p>Created at: {article.created_at}</p>
+              <p>Created at: {new Date(article.created_at).toUTCString()}</p>
               <p>Votes: {article.votes}</p>
             </div>
           </Link>
