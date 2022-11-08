@@ -51,12 +51,13 @@ export default function Articles({ setArticle_id }) {
         }}
         className="parameters"
       >
-        <label>
+        <label className="parameters-childs">
           Sort By:
           <select
             onChange={(event) => {
               handleSortBy(event);
             }}
+            className="dropdown"
           >
             <option value={"created_at"}>Date</option>
             <option value={"title"}>Title</option>
@@ -67,12 +68,13 @@ export default function Articles({ setArticle_id }) {
             onChange={(event) => {
               handleOrder(event);
             }}
+            className="dropdown"
           >
             <option value={"DESC"}>Descending</option>
             <option value={"ASC"}>Ascending</option>
           </select>
         </label>
-        <input type="submit" value="Filter!" />
+        <input type="submit" value="Filter!" className="button" />
       </form>
 
       {articles.map((article) => {
