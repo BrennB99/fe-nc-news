@@ -6,7 +6,7 @@ import "../App.css";
 
 export default function NavBar({ setTopic }) {
   return (
-    <Navbar bg="warning" expand="lg">
+    <Navbar className="navbar-custom">
       <Container>
         <LinkContainer to="/articles/home">
           <Navbar.Brand>NCNews</Navbar.Brand>
@@ -15,19 +15,19 @@ export default function NavBar({ setTopic }) {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <LinkContainer to="/articles/home">
-              <Nav.Link>Home</Nav.Link>
+              <Nav.Link className="nav-links">Home</Nav.Link>
             </LinkContainer>
 
             <LinkContainer to="/articles/cooking">
-              <Nav.Link>Cooking</Nav.Link>
+              <Nav.Link className="nav-links">Cooking</Nav.Link>
             </LinkContainer>
 
             <LinkContainer to="/articles/football">
-              <Nav.Link>Football</Nav.Link>
+              <Nav.Link className="nav-links">Football</Nav.Link>
             </LinkContainer>
 
             <LinkContainer to="/articles/coding">
-              <Nav.Link>Coding</Nav.Link>
+              <Nav.Link className="nav-links">Coding</Nav.Link>
             </LinkContainer>
           </Nav>
         </Navbar.Collapse>

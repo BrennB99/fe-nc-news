@@ -78,6 +78,7 @@ export default function Articles({ setArticle_id }) {
       {articles.map((article) => {
         return (
           <Link
+            className="articles-link"
             to={`/article/${article.article_id}`}
             onClick={() => setArticle_id(article.article_id)}
           >

@@ -2,7 +2,50 @@
   text-align: center;
   display: grid;
   grid-template-columns: auto;
-  background-color: #fc4a1a;
+  background-color: #fff;
+  height: 100%;
+}
+
+.navbar-custom {
+  background-color: #1a2238;
+}
+
+.me-auto {
+  color: #fff !important;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+  color: #fff;
+}
+
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-text:hover {
+  color: #ff6a3d;
+}
+
+.nav-links {
+  color: #fff !important;
+  position: relative;
+}
+
+.nav-links::after {
+  content: "";
+  width: 0;
+  height: 3px;
+  background: #ff6a3d;
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  transition: 0.5s;
+}
+
+.nav-links:hover::after {
+  width: 100%;
+}
+
+.active {
+  color: #ff6a3d !important;
 }
 
 .article-page {
@@ -15,10 +58,13 @@
   display: block;
   height: max-content;
   color: black !important;
-  text-decoration: none;
   background-color: #4abdac;
   padding: 20px;
   margin: 10px;
+}
+
+.articles-link {
+  text-decoration: none;
 }
 
 .CommentContainer {
@@ -46,10 +92,6 @@
 
 .parameters {
   background-color: #ffc107;
-}
-
-.navbar-custom {
-  background-color: lightgreen;
 }
 
 @media only screen and (min-width: 600px) {
