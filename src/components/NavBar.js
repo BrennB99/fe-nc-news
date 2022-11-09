@@ -6,7 +6,7 @@ import "../App.css";
 
 export default function NavBar({ setTopic }) {
   return (
-    <Navbar className="navbar-custom">
+    <Navbar className="navbar-custom" bg="" expand="">
       <Container>
         <LinkContainer to="/articles/home">
           <Navbar.Brand>NCNews</Navbar.Brand>
