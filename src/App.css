@@ -78,7 +78,7 @@
 
 .article {
   display: block;
-  height: fit-content;
+  height: 20em;
   color: #1a2238 !important;
   background-color: #fff;
   padding: 20px;
@@ -217,10 +217,5 @@
 @media screen and (max-width: 600px) {
   .App {
     display: block;
-  }
-
-  .navbar-toggler {
-    color: #fff !important;
-    background-color: #fff;
   }
 }
