@@ -91,8 +91,12 @@ export default function Articles({ setArticle_id }) {
               <p className="created">
                 Created at: {new Date(article.created_at).toUTCString()}
               </p>
-              <p className="votes">Votes: {article.votes}</p>
-              <p className="comments">Comments: {article.comment_count}</p>
+              <p className="votes">
+                <i class="fa-regular fa-heart"></i> {article.votes}
+              </p>
+              <p className="comments">
+                <i class="fa-regular fa-comment"></i> {article.comment_count}
+              </p>
             </div>
           </Link>
         );

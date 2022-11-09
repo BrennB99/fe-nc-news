@@ -68,15 +68,16 @@
 }
 
 .button:hover {
-  background-color: #ff6a3d;
-  color: white;
+  background-color: #1a2238;
+  color: #ff6a3d;
+  border: 1px solid #ff6a3d;
 }
 
 .article {
   display: block;
   height: max-content;
-  color: #1a2238 !important;
-  background-color: white;
+  color: #fff !important;
+  background-color: #1a2238;
   padding: 20px;
   margin: 10px;
   transition: transform 0.5s;
@@ -114,7 +115,7 @@
 
 .article:hover {
   color: #ff6a3d !important;
-  background-color: #1a2238;
+  /* background-color: #1a2238; */
   transform: scale(1.05);
 }
 
@@ -124,9 +125,18 @@
 
 /* ------------------------Article page------------------------------------- */
 .article-page {
-  background-color: #4abdac;
+  background-color: #1a2238;
+
   margin: 10px;
   border: 2px solid black;
+}
+
+.article-page h1 {
+  color: #ff6a3d;
+}
+
+.article-page p {
+  color: #fff;
 }
 
 .CommentContainer {
