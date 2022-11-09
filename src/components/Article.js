@@ -41,29 +41,30 @@ export default function Article() {
           <h1>{article.title}</h1>
         </div>
         <div className="article-info">
-          <div className="written-created">
-            <p>Written By: {article.author}</p>
-            <p>Created: {new Date(article.created_at).toUTCString()}</p>
-          </div>
-          <div className="votes-comments">
+          <p className="author">Written By: {article.author}</p>
+          <p className="created">
+            Created: {new Date(article.created_at).toUTCString()}
+          </p>
+          <div className="votes">
             <p>Votes: {article.votes + currentVotes}</p>
             <button
-              onClick={() => {
+              onClick={(event) => {
                 handleVotes(article_id, { inc_votes: 1 });
               }}
+              className="btn-vote"
             >
-              Like!
+              <i className="fa-solid fa-thumbs-up"></i>
             </button>
             <button
               onClick={() => {
                 handleVotes(article_id, { inc_votes: -1 });
               }}
+              className="btn-vote"
             >
-              Dislike!
+              <i class="fa-solid fa-thumbs-down"></i>
             </button>
-
-            <p>comments: {article.comment_count}</p>
           </div>
+          <p className="comments">comments: {article.comment_count}</p>
         </div>
         <div className="article-body">
           <p>{article.body}</p>

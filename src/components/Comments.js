@@ -85,6 +85,7 @@ export default function Comments() {
                 onClick={() => {
                   removeComment(comment.comment_id);
                 }}
+                className="btn-delete"
               >
                 Delete!
               </button>

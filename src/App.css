@@ -1,7 +1,8 @@
 .App {
-  text-align: center;
   display: grid;
-  grid-template-columns: auto;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  text-align: center;
   background-color: grey;
   height: 100%;
 }
@@ -53,6 +54,8 @@
   background-color: #1a2238;
   color: white;
   padding: 5px;
+  grid-column-start: 1;
+  grid-column-end: 4;
 }
 
 .dropdown {
@@ -75,14 +78,20 @@
 
 .article {
   display: block;
-  height: max-content;
-  color: #fff !important;
-  background-color: #1a2238;
+  height: 18em;
+  color: #1a2238 !important;
+  background-color: #fff;
   padding: 20px;
   margin: 10px;
   transition: transform 0.5s;
   display: grid;
   grid-template: 1fr 2fr 1fr 1fr / 1fr 1fr;
+}
+
+.article:hover {
+  color: #ff6a3d !important;
+  background-color: #1a2238;
+  transform: scale(1.05);
 }
 
 .title {
@@ -113,12 +122,6 @@
   grid-area: 4 / 2 / 5 / 3;
 }
 
-.article:hover {
-  color: #ff6a3d !important;
-  /* background-color: #1a2238; */
-  transform: scale(1.05);
-}
-
 .articles-link {
   text-decoration: none;
 }
@@ -126,30 +129,77 @@
 /* ------------------------Article page------------------------------------- */
 .article-page {
   background-color: #1a2238;
-
-  margin: 10px;
+  margin: 5px;
   border: 2px solid black;
+  text-align: center;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  height: fit-content;
 }
 
 .article-page h1 {
   color: #ff6a3d;
+  margin: 10px 20px;
+}
+
+.article-info {
+  display: grid;
+  grid-area: auto auto / auto auto;
 }
 
 .article-page p {
   color: #fff;
 }
 
+.votes p {
+  margin: 0;
+}
+
+.btn-vote {
+  font-size: 18px;
+  color: white;
+  background: transparent;
+  border: 0;
+  margin: 5px;
+  transition: transform 0.5s;
+}
+
+.btn-vote:hover {
+  color: #ff6a3d;
+  transform: scale(1.2);
+}
+
+.article-body {
+  margin: 10px 20px;
+}
+
 .CommentContainer {
-  margin: 10px;
-  background-color: #ffc107;
+  margin: 5px;
+  background-color: #1a2238;
+  height: 93vh;
+  overflow: auto;
+  text-align: justify;
+  color: #fff;
+}
+
+.CommentContainer h5 {
+  margin: 5px;
+}
+
+.commentForm {
+  margin-left: 5px;
+  text-align: left;
 }
 
 .singleComment {
   display: grid;
+  border-radius: 12px;
   grid-template-columns: auto auto;
   grid-template-rows: auto auto;
-  background-color: #4abdac;
-  margin: 3px;
+  background-color: #3d5a80;
+  color: #fff;
+  margin: 5px;
+  padding: 10px;
 }
 
 .commentBody {
@@ -157,42 +207,12 @@
   grid-column-end: 3;
 }
 
-.article-info {
-  display: grid;
-  grid-template-columns: auto auto;
+.btn-delete {
+  background-color: #1a2238;
+  color: #ff6a3d;
+  border: 0;
+  border-radius: 12px;
 }
 
-@media only screen and (min-width: 600px) {
-  .article-page {
-    text-align: center;
-    grid-column-start: 1;
-    grid-column-end: 3;
-    height: fit-content;
-  }
-
-  .article {
-    height: 18em;
-  }
-
-  .App {
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: center;
-  }
-
-  .CommentContainer {
-    height: 93vh;
-    overflow: auto;
-    margin-left: 20px;
-    text-align: justify;
-  }
-
-  .commentForm {
-    margin-left: 5px;
-    text-align: left;
-  }
-
-  .parameters {
-    grid-column-start: 1;
-    grid-column-end: 4;
-  }
+@media only screen and (max-width: 600px) {
 }
